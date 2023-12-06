@@ -43,11 +43,11 @@
         // Ввывод массива строк на консоль
         static void ShowArrayInt(int[] array)
         {
-            Console.WriteLine("Массив");
             for (int i = 0; i < array.Length; i++)
             {
                 Console.Write(array[i] + " ");
             }
+            Console.WriteLine();
         }
         //Задание 5.1.6 Ввод массима с клавиатуры
         static int[] GetArrayFromConsole()
@@ -62,7 +62,18 @@
             return result;
         }
         //Сорировка массива
-        static int[] SortArray(int[] array) 
+        static void SortArray(in int[] array, out int[] sortedasc, out int[] sorteddesc) 
+        {
+            sortedasc = new int[array.Length];
+            sorteddesc = new int[array.Length];
+            array.CopyTo(sortedasc, 0);
+            array.CopyTo (sorteddesc, 0);
+            sortedasc = SortArrayAsc(sortedasc);
+            sorteddesc = SortArrayDesc(sorteddesc);
+        }
+
+        //Сортировка массива по возрастанию
+        static int[] SortArrayAsc(int[] array)
         {
             int temp;
             for (int i = 0; i < array.Length; i++)
@@ -70,6 +81,24 @@
                 for (int j = i + 1; j < array.Length; j++)
                 {
                     if (array[i] > array[j])
+                    {
+                        temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+            return array;
+        }
+        //Сортировка массива по убыванию
+        static int[] SortArrayDesc(int[] array)
+        {
+            int temp;
+            for (int i = 0; i < array.Length; i++)
+            {
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[i] < array[j])
                     {
                         temp = array[i];
                         array[i] = array[j];
@@ -115,7 +144,15 @@
             //Вывод массива чисел
             ShowArrayInt(array);
             */
-
+            //Задание 5.3.13 Сортировка массива по возрастанию и по убыванию
+            int[] array = { 2, -4, 6, 8, 0, -9, 5, 3, -1 };
+            SortArray(array, out int[] sortedasc, out int[] sorteddesc);
+            Console.WriteLine("Массив");
+            ShowArrayInt(array);
+            Console.WriteLine("Отсортированный массив по возрастанию");
+            ShowArrayInt(sortedasc);
+            Console.WriteLine("Отсортированный массив по убыванию");
+            ShowArrayInt(sorteddesc);
         }
     }
 }
