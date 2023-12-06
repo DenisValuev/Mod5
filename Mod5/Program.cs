@@ -91,7 +91,7 @@
             {
                 Console.WriteLine("Введите любимое блюдо номер {0}",i + 1);
                 User.Dishes[i] = Console.ReadLine();
-            }
+            }       
             */
             //Задание 5.1.5 Ввод цвета с консоли
             /*
@@ -105,6 +105,7 @@
             ShowArrayString(favcolors);
             */
             //Задание 5.1.6 Ввод элементов массива с клавиатуры, сортировка, вывод на экран
+            /*
             var array = new int[5];
             //Ввод массива
             array = GetArrayFromConsole();
@@ -113,6 +114,8 @@
             array = SortArray(array);
             //Вывод массива чисел
             ShowArrayInt(array);
+            */
+
         }
     }
 }
